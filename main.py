@@ -10,16 +10,23 @@ app = Flask(__name__)
 
 
 # load databasedataset===================================
-sym_des = pd.read_csv("datasets/symtoms_df.csv")
-precautions = pd.read_csv("datasets/precautions_df.csv")
-workout = pd.read_csv("datasets/workout_df.csv")
-description = pd.read_csv("datasets/description.csv")
-medications = pd.read_csv('datasets/medications.csv')
-diets = pd.read_csv("datasets/diets.csv")
+# sym_des = pd.read_csv("datasets/symtoms_df.csv")
+# precautions = pd.read_csv("datasets/precautions_df.csv")
+# workout = pd.read_csv("datasets/workout_df.csv")
+# description = pd.read_csv("datasets/description.csv")
+# medications = pd.read_csv('datasets/medications.csv')
+# diets = pd.read_csv("datasets/diets.csv")
+
+sym_des = pd.read_csv("symtoms_df.csv")
+precautions = pd.read_csv("precautions_df.csv")
+workout = pd.read_csv("workout_df.csv")
+description = pd.read_csv("description.csv")
+medications = pd.read_csv('medications.csv')
+diets = pd.read_csv("diets.csv")
 
 
 # load model===========================================
-svc = pickle.load(open('models/svc.pkl','rb'))
+svc = pickle.load(open('svc.pkl','rb'))
 
 
 #============================================================
@@ -47,12 +54,37 @@ symptoms_dict = {'itching': 0, 'skin_rash': 1, 'nodal_skin_eruptions': 2, 'conti
 diseases_list = {15: 'Fungal infection', 4: 'Allergy', 16: 'GERD', 9: 'Chronic cholestasis', 14: 'Drug Reaction', 33: 'Peptic ulcer diseae', 1: 'AIDS', 12: 'Diabetes ', 17: 'Gastroenteritis', 6: 'Bronchial Asthma', 23: 'Hypertension ', 30: 'Migraine', 7: 'Cervical spondylosis', 32: 'Paralysis (brain hemorrhage)', 28: 'Jaundice', 29: 'Malaria', 8: 'Chicken pox', 11: 'Dengue', 37: 'Typhoid', 40: 'hepatitis A', 19: 'Hepatitis B', 20: 'Hepatitis C', 21: 'Hepatitis D', 22: 'Hepatitis E', 3: 'Alcoholic hepatitis', 36: 'Tuberculosis', 10: 'Common Cold', 34: 'Pneumonia', 13: 'Dimorphic hemmorhoids(piles)', 18: 'Heart attack', 39: 'Varicose veins', 26: 'Hypothyroidism', 24: 'Hyperthyroidism', 25: 'Hypoglycemia', 31: 'Osteoarthristis', 5: 'Arthritis', 0: '(vertigo) Paroymsal  Positional Vertigo', 2: 'Acne', 38: 'Urinary tract infection', 35: 'Psoriasis', 27: 'Impetigo'}
 
 # Model Prediction function
-def get_predicted_value(patient_symptoms):
-    input_vector = np.zeros(len(symptoms_dict))
-    for item in patient_symptoms:
-        input_vector[symptoms_dict[item]] = 1
-    return diseases_list[svc.predict([input_vector])[0]]
+# def get_predicted_value(patient_symptoms):
+#     input_vector = np.zeros(len(symptoms_dict))
+#     for item in patient_symptoms:
+#         input_vector[symptoms_dict[item]] = 1
+#     return diseases_list[svc.predict([input_vector])[0]]
 
+
+def get_predicted_value(patient_symptoms):
+    # Initialize the input vector with zeros
+    input_vector = np.zeros(len(symptoms_dict))
+    unrecognized_symptoms = []
+
+    # Process each symptom from the patient
+    for item in patient_symptoms:
+        # Check if the symptom exists in the symptoms_dict
+        if item in symptoms_dict:
+            input_vector[symptoms_dict[item]] = 1
+        else:
+            # Collect unrecognized symptoms
+            unrecognized_symptoms.append(item)
+
+    # Optionally handle unrecognized symptoms
+    if unrecognized_symptoms:
+        unrecognized_list = ", ".join(unrecognized_symptoms)
+        warning_message = f"Warning: The following symptoms are not recognized and will be ignored: {unrecognized_list}"
+        print(warning_message)  # Print or log the warning as needed
+
+    # Proceed with the prediction using the input vector
+    predicted_disease = diseases_list[svc.predict([input_vector])[0]]
+    
+    return predicted_disease
 
 
 
