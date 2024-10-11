@@ -1,6 +1,5 @@
 
 # Personalized Medical Recommendation System with Machine Learning
-![Alt text](./Screenshot%202024-10-01%20123638.png)
 
 Welcome to **MediGuide**, a cutting-edge platform designed to help users better understand and manage their health through advanced machine learning technologies. Our system analyzes user-input symptoms and accurately predicts potential diseases, offering personalized medical and wellness recommendations.
 
