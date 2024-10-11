@@ -60,7 +60,7 @@ To set up the Personalized Medical Recommendation System locally, follow these s
 
 4. **Run the Flask application**:
    ```bash
-   python app.py
+   python main.py
    ```
 
 5. **Access the system**: 
