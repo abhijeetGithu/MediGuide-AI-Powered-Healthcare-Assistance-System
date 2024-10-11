@@ -50,7 +50,7 @@ To set up the Personalized Medical Recommendation System locally, follow these s
 
 2. **Navigate to the project directory**:
    ```bash
-   cd medical-recommendation-system
+   cd Personalized-Treatment-Optimization-Emphasizes-the-tailored-approach-to-improving-patient-care
    ```
 
 3. **Install the necessary dependencies**:
