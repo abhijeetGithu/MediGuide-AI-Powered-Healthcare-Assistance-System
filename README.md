@@ -13,7 +13,7 @@ Our sleek and intuitive design allows users to input their symptoms effortlessly
 Simply type your symptoms or use the speech recognition feature for added convenience, then click "Predict" to get instant results.
 
 ### 🤖 **Advanced Machine Learning Models**
-We have integrated state-of-the-art machine learning models to provide reliable disease predictions. The models analyze your symptoms and offer precise results, empowering you to make informed decisions about your health.
+We have integrated state-of-the-art machine learning models, such as Support Vector Classifier (SVC), Random Forest, Gradient Boosting, K-Nearest Neighbors, and Naive Bayes, to provide reliable disease predictions. These models analyze your symptoms and offer precise results, empowering you to make informed decisions about your health.
 
 ### 💊 **Personalized Recommendations**
 Based on the predicted disease, our system provides:
