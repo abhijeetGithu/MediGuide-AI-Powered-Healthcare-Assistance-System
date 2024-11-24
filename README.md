@@ -22,7 +22,7 @@ Based on the predicted disease, our system provides:
 - Precautionary measures
 - Workout routines tailored to your health
 - Diet recommendations
-![MediGuide Interface](./Screenshot%202024-10-01%123654.png)
+![MediGuide Interface](./Screenshot%202024-10-01%20123654.png)
 
 ### 🌐 **Flask-Powered Web Application**
 The system is seamlessly powered by Flask, making it accessible anytime and anywhere through any device. Enjoy the convenience of managing your health at your fingertips.
